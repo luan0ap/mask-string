@@ -56,14 +56,14 @@ when('the mask has wildcards', () => {
   assertEquals(MaskString('1a!-=;', '***.***'), '1a!.-=;')
 })
 
-when('there are two consecutive masking chars', () => {
-  let mask = '##..##'
+// when('there are two consecutive masking chars', () => {
+//   let mask = '##..##'
 
-  assertEquals(MaskString('123456', mask), '12..34')
-  assertEquals(MaskString('123', mask), '12..3')
-  assertEquals(MaskString('12', mask), '12')
-  assertEquals(MaskString('12.', mask), '12')
-})
+//   assertEquals(MaskString('123456', mask), '12..34')
+//   assertEquals(MaskString('123', mask), '12..3')
+//   assertEquals(MaskString('12', mask), '12')
+//   assertEquals(MaskString('12.', mask), '12')
+// })
 
 it('is fast', () => {
   let start = new Date()
