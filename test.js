@@ -32,24 +32,24 @@ when('the mask is empty', () => {
 })
 
 when('the mask has no masking chars', () => {
-  assertEquals(MaskString('123', '999'), '123')
+  assertEquals(MaskString('123', '###'), '123')
 })
 
 when('the text is longer than the mask', () => {
-  assertEquals(MaskString('123456', '999'), '123')
+  assertEquals(MaskString('123456', '###'), '123')
 })
 
 when('there are some masking chars', () => {
-  assertEquals(MaskString('123', '9.9-9'), '1.2-3')
-  assertEquals(MaskString('1.2-3', '9.9-9'), '1.2-3')
+  assertEquals(MaskString('123', '#.#-#'), '1.2-3')
+  assertEquals(MaskString('1.2-3', '#.#-#'), '1.2-3')
 })
 
 when('the mask has letters', () => {
-  assertEquals(MaskString('123abc', 'A.A-A'), 'a.b-c')
+  assertEquals(MaskString('123abc', 'S.S-S'), 'a.b-c')
 })
 
 when('the mask has letters and numbers', () => {
-  assertEquals(MaskString('1a2b3c', 'S.S-S'), '1.a-2')
+  assertEquals(MaskString('1a2b3c', 'N.N-N'), '1.a-2')
 })
 
 when('the mask has wildcards', () => {
@@ -57,7 +57,7 @@ when('the mask has wildcards', () => {
 })
 
 when('there are two consecutive masking chars', () => {
-  let mask = '99..99'
+  let mask = '##..##'
 
   assertEquals(MaskString('123456', mask), '12..34')
   assertEquals(MaskString('123', mask), '12..3')
